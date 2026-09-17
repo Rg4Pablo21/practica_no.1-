@@ -1,0 +1,58 @@
+---
+let count = 0;
+
+export interface Props {
+}
+---
+
+<div class="contador-container">
+  <h1>Contador Interactivo</h1>
+  
+  <button id="btn-menos">-</button>
+  <span id="valor-contador">{count}</span>
+  <button id="btn-mas">+</button>
+</div>
+
+<script>
+  const btnMenos = document.getElementById('btn-menos');
+  const btnMas = document.getElementById('btn-mas');
+  const valorSpan = document.getElementById('valor-contador');
+
+  let contador = parseInt(valorSpan!.textContent || '0');
+
+  const actualizarContador = () => {
+    valorSpan!.textContent = contador.toString();
+  };
+
+  btnMas?.addEventListener('click', () => {
+    contador += 1;
+    actualizarContador();
+  });
+
+  btnMenos?.addEventListener('click', () => {
+    contador -= 1;
+    actualizarContador();
+  });
+</script>
+
+<style>
+  .contador-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-family: system-ui, sans-serif;
+    margin-top: 2rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  #valor-contador {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+</style>
